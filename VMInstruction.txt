@@ -1,0 +1,59 @@
+Instructions on Accessing the Cloud VMs
+
+How to Upload your Public Key
+
+1. Create your own SSH key pair. Here is a tutorial on how to create the SSH key. 
+
+2. Following the link https://www.ece.ualberta.ca/~support/uploadKey.php to upload your public key. After logging in, simply copy and paste the public key content into the form there and submit. 
+
+Students will work in groups of three. Once you have uploaded the public key, for each group, please send your names, CCIDs, and Student ID to the LIs and they will send you the port number (90**) and username (user_**) of your assigned VM cluster (where ** is some number).
+
+
+
+How to Log on to the VM
+
+To log on to the cluster, use the command 
+
+ >> ssh -i /path/to/your/private/key -p90** user_**@129.128.215.200
+
+90** will be the port number and user_** will be the username.
+
+
+
+How to Upload and Download File to VM
+
+To upload:
+
+>> scp -i /path/to/your/private/key -P90** /path/to/your/source/file user_**@129.128.215.200:~/path/to/your/destination/file
+
+To download:
+
+>> scp -i /path/to/your/private/key -P90** user_**@129.128.215.200:~/path/to/your/source/file /path/to/your/destination/file
+
+Note the capital P.
+
+
+
+Accessing Other Nodes in the Same Cluster (Available after March 5)
+
+Every cluster contains 4 virtual nodes, with their IP address written in the hosts file. Upon initial connection to your cluster, you will be on the master node (corresponding to the first IP address in your hosts file).
+
+To access other nodes:
+
+>> ssh IP
+
+To copy files:
+
+>> scp srcFile IP:destFile
+
+or
+
+>> scp IP:srcFile destFile
+
+To copy folders:
+
+>> scp -r srcFolder IP:destFolder
+
+or
+
+>> scp -r IP:srcFolder destFolder
